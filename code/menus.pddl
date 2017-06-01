@@ -1,22 +1,29 @@
 (define (domain menus)
-  (:requirements :strips)
+  (:requirements :typing)
+
+  (:types 
+    dia - object
+    primero - object
+    segundo - object
+    )
+
   (:predicates
     ;; Static predicates:
-    (primero ?p) (segundo ?s) (dia ?d)
+
     ;; Non-static predicates:
+
     ; Primer plato p es incompatibe con segundo plato s
-    (incompatible ?p ?s)
-    (servido ?d ?p ?s)
+    (incompatible ?p - primero ?s - segundo)
+    (menu ?d - dia ?p - primero ?s - segundo)
+    (servido ?d - dia)
     )
 
   (:action servir
-           :parameters (?d ?p ?s)
+           :parameters (?d - dia ?p - primero ?s - segundo)
            :precondition (and 
-                           (dia ?d) 
-                           (primero ?p) 
-                           (segundo ?s)
                            (not (incompatible ?p ?s))
+                           (not (servido ?d))
                            )
-           :effect ( (servido ?d ?p ?s) )
+           :effect  (and (menu ?d ?p ?s) (servido ?d))
            )
   )

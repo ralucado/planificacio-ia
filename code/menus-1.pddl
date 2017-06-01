@@ -1,38 +1,21 @@
-(define (problem C3_2)
+(define (problem menus-1)
   (:domain menus)
   (:objects
     ; Primeros
-    paella ensalada sopa
+    paella ensalada sopa - primero
     ; Segundos
-    lubina salmon entrecot
+    lubina salmon entrecot - segundo
     ; Dias
-    lunes martes miercoles jueves viernes
+    lunes martes miercoles jueves viernes - dia
     )
   (:init
-    ;; Type declarations:
-
-    ; Primeros
-    (primero paella)
-    (primero ensalada) 
-    (primero sopa)
-
-    ; Segundos
-    (segundo lubina)
-    (segundo salmon)
-    (segundo entrecot)
-
-    ; Dias
-    (dia lunes)
-    (dia martes)
-    (dia miercoles)
-    (dia jueves)
-    (dia viernes)
 
     ; Incompatibilidades 
     (incompatible paella lubina)
+    (incompatible paella salmon)
     (incompatible ensalada salmon)
     (incompatible sopa entrecot)
     )
 
-  (:goal (forall (?d - dia) (servido ?d ? ?)))
+  (:goal (forall (?d - dia) (servido ?d)))
   )
