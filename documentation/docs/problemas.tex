@@ -92,3 +92,27 @@ se declara lo siguiente:
 \end{itemize}
 
 \subsection{Estado final}
+
+El estado final del problema es definido por el goal:
+
+\begin{verbatim}
+(:goal (forall (?d - dia)
+               (and (servido_primero ?d)
+                    (servido_segundo ?d)
+                    )
+               )
+       )
+\end{verbatim}
+
+lo que indica que el problema se dará por resuelto una vez todos los dias
+de la semana tengan servidos tanto su primero como segundo plato.
+
+Adicionalmente, usando \texttt{metric}, indicamos que
+queremos minimizar la suma 
+total de los precios de los menues de la semana:
+
+\begin{verbatim}
+(:metric 
+  minimize (precio_total)
+  )
+\end{verbatim}
