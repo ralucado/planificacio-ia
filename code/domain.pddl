@@ -53,6 +53,11 @@
     (precio_plato ?p - plato)
     )
 
+  ; Accion para servir el primer plato del ultimo dia.
+  ; Es necesario hacerlo de esta manera porque necesitamos
+  ; de algun dia que tenga los platos ya servidos
+  ; ya que dependemos del tipo de plato del dia
+  ; consecutivo al nuestro para servirlo.
   (:action servir_ultimo_dia_primero
            :parameters (
                         ?d - dia 
@@ -73,6 +78,8 @@
                       )
            )
 
+  ; Lo mismo que servir_ultimo_dia_primero pero esta vez con el segundo
+  ; plato
   (:action servir_ultimo_dia_segundo
            :parameters (
                         ?d - dia 
@@ -96,6 +103,11 @@
                       )
            )
 
+  ; Esta accion puede ser utilizada sobre el dia d si este no ha servido
+  ; todavia su segundo plato. Esto es necesario por la EXTENSION 3, ya
+  ; que algunos platos pueden haber sido asignados a dias sin haber 
+  ; comprobado su incompatibilidad con el mismo menu o con el dia 
+  ; consecutivo.
   (:action servir_primero_solo
            :parameters (
                         ?d - dia 
@@ -123,6 +135,8 @@
                       )
            )
 
+  ; Accion que sirve el primer plato p de un dia d asumiendo
+  ; que el segundo plato x no ha sido servido en el dia d.
   (:action servir_primero
            :parameters (
                         ?d - dia 
@@ -160,6 +174,7 @@
                       )
            )
 
+  ; Lo mismo que servir_primero pero con los roles invertidos.
   (:action servir_segundo
            :parameters (
                         ?d - dia 
