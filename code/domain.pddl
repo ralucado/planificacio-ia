@@ -1,5 +1,5 @@
 (define (domain menus)
-  (:requirements :strips :equality :typing :fluents)
+  (:requirements [:strips] [:equality] [:typing] [:fluents])
 
   (:types 
     dia - object
